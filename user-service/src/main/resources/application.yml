@@ -3,6 +3,32 @@ spring:
     name: user-service
 
 
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MYSQL # 마리아DB 쿼리를 문법을 작성함
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        format_sql: true
+    show-sql: true
+  output:
+    ansi:
+      enabled: always
+
 server:
   port: 0 # ???? ????
 
@@ -15,3 +41,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka # ?? ??????? ?? ?? url ???
+
+greeting:
+  message: Welcome to Simeple
