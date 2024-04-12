@@ -1,6 +1,7 @@
 package com.example.userservice.controller;
 
 import com.example.userservice.dto.UserDto;
+import com.example.userservice.entity.UserEntity;
 import com.example.userservice.service.UserService;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
@@ -11,8 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user-service")
 public class UserController {
 
     @Autowired
@@ -23,7 +27,7 @@ public class UserController {
 
     @GetMapping("/health_check")
     public String status() {
-        return "lt's working in user service";
+        return "lt's working in user service on Port %s".formatted(environment.getProperty("local.server.port"));
     }
 
     @GetMapping("/welcome")
@@ -47,7 +51,41 @@ public class UserController {
                 .build();
 
         userService.createUser(user);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<ResponseUser>> getUsers() {
+        Iterable<UserEntity> userList = userService.getUserByAll();
+
+        List<ResponseUser> result = new ArrayList<>();
+
+        userList.forEach(v -> {
+            result.add(
+                    ResponseUser.builder()
+                            .userId(v.getUserId())
+                            .email(v.getEmail())
+                            .name(v.getName())
+                            .build()
+            );
+        });
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<ResponseUser> getUser(@PathVariable(value = "userId") String userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+
+
+        ResponseUser result = ResponseUser.builder()
+                .userId(userDto.getUserId())
+                .email(userDto.getEmail())
+                .name(userDto.getName())
+                .build();
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
 }

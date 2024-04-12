@@ -3,9 +3,11 @@ package com.example.userservice.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "users")
 public class UserEntity {
     @Id
