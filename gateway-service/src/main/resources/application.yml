@@ -87,10 +87,6 @@ spring:
               - RemoveRequestHeader=Cookie
               - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
-
-
-
-
 # Actuator
 management:
   endpoints:
