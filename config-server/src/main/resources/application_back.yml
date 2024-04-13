@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  #rabbit
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,beans,busrefresh
+
+  # 로컬에서 읽기
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      server:
+        # 로컬 읽기
+        native:
+          search-locations: file://\Users\qkqhe\test
+        # / 로컬읽기
+        git:
+#          uri: file://C:\Users\qkqhe\msa-service-discovery # ?? ??
+          # git
+#          uri: https://github.com/Kimminwoo6039/MSA_study
+#          username: [user name]
+#          password: [password]
