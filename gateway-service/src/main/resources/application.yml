@@ -8,6 +8,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+
+
 spring:
   application:
     name: gateway-service
@@ -86,6 +88,10 @@ spring:
               - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
 
+
+
+
+# Actuator
 management:
   endpoints:
     web:
