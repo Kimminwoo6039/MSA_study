@@ -10,3 +10,7 @@ spring:
       server:
         git:
           uri: file://C:\Users\qkqhe\msa-service-discovery # ?? ??
+          # git
+#          uri: https://github.com/Kimminwoo6039/MSA_study.git
+#          username: [user name]
+#          password: [password]
