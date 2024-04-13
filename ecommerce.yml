@@ -1,7 +1,6 @@
 gateway:
   ip: 192.168.75.138
 
-
 token:
   secret: 31231323
   expiration_time: 3123131312

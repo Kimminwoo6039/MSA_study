@@ -5,3 +5,4 @@ gateway:
 token:
   secret: dev
   expiration_time: dev
+
