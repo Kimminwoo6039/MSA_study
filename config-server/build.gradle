@@ -25,6 +25,14 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.2.4'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+
 }
 
 dependencyManagement {
