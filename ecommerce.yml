@@ -3,5 +3,5 @@ gateway:
 
 
 token:
-  secret: token
-  expiration_time: 8640000
+  secret: 31231323
+  expiration_time: 3123131312
