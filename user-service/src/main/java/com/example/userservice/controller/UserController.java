@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+//@RequestMapping("/") // 이거 /user-service/  > / 변경
 public class UserController {
 
     @Autowired
@@ -88,4 +88,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+
+    @PostMapping("/login")
+    public String login() {
+        return "";
+    }
 }
