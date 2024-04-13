@@ -14,7 +14,7 @@ spring:
     config:
       server:
         git:
-          uri: C:/Users/qkqhe/msa-service-discovery
+          uri: https://github.com/Kimminwoo6039/MSA_study
 
 management:
   endpoints:
